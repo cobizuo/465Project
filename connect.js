@@ -1,49 +1,66 @@
 // run using node connect.js
-// type in browser: localhost:5000/
-
-const mysql = require("mysql");
-const express = require("express");
-const bodyParser = require("bosy-parser");
-const encoder = bodyParser.urlencoded();
+// type in browser: localhost:4000/
+const express = require('express');
+const bodyParser = require('body-parser');
+const mysql = require('mysql');
 
 const app = express();
-app.use("/assets",express.static("assets"));
+const port = 4000;
 
-const connection = mysql ({
-    host: "localhost",
-    user: "root",
-    password:"",
-    database:"fitness"
+app.use(bodyParser.json());
+
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'fitness'
 });
 
-// db connection
-connection.connect(function(error){
-    if (error) throw error
-    else console.log("connected to  the database sucessfuly!")
-})
+connection.connect(error => {
+    if (error) throw error;
+    console.log('Connected to MySQL database');
+});
 
-app.get("/",function(req,res) {
-    res.sendFile(__dirname + "/index.html");    
-})
+app.post('/signup', (req, res) => {
+    // Handle signup logic here
+    const { name, height, weight, email, password } = req.body;
 
-app.post("/",encoder,function(req,res){
-var username = req.body.username;
-var password = req.body.password;
+    const userData = {
+        name,
+        height,
+        weight,
+        email,
+        password
+    };
 
-    connection.query("select * from user where username = ? and password = ?",[username,password],function(error,results,fields){
-        if(results.length>0){
-            // if login=sucessfull send to index
-            res.redirect("/home");
+    connection.query('INSERT INTO users SET ?', userData, (error, results) => {
+        if (error) {
+            console.error('Error inserting user:', error);
+            res.json({ success: false });
+        } else {
+            console.log('User inserted:', results);
+            res.json({ success: true });
         }
-        else{
-            res.redirect("/");
+    });
+});
+
+app.post('/login', (req, res) => {
+    const { email, password } = req.body;
+
+    connection.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], (error, results) => {
+        if (error) {
+            console.error('Error fetching user:', error);
+            res.json({ success: false });
+        } else if (results.length > 0) {
+            console.log('User found:', results[0]);
+            res.json({ success: true });
+        } else {
+            console.log('User not found');
+            res.json({ success: false });
         }
-        res.end();
-    } )
-})
+    });
+});
 
-app.get("/home", function(req,res){
-    res.sendFile(__dirname + "/index.html")
-})
-
-app.listen(4000);
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});

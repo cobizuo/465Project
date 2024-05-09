@@ -10,6 +10,7 @@ body {
   margin: 0;
   padding: 0;
   background-image: url(../img/gym-background.jpg);
+  background-position: 50%;
   box-sizing: border-box;
 }
 
@@ -41,6 +42,8 @@ h1 {
   background: #fff;
   padding: 50px 60px 70px;
   text-align: center;
+  border-radius: 30px;
+  
 }
 
 .form-box h1 {
@@ -103,7 +106,19 @@ form p a{
   width: 100%;
   display: flex;
   justify-content: space-between;
+  gap: 10px;
   
+}
+
+.btn-field .btn-main{
+  flex-basis: 45%;
+  background: black;
+  color:white;
+  height: 40px;
+  border-radius: 20px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
 }
 
 .btn-field button{
@@ -116,6 +131,11 @@ form p a{
   outline: 0;
   cursor: pointer;
   transition: background 1s;
+}
+
+.btn-field button a{
+  color: #fff;
+  text-decoration: none;
 }
 
 .btn-field button.disable{
@@ -160,15 +180,18 @@ form p a{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  background-color: red;
+  background-color: transparent;
   width: 100%;
   height: 300px;
+  gap: 5px;
 }
 
 .prog1{
   background-color: blue;
   width: 280px;
   height: 300px;
+  padding-top: 10px;
+  margin: 10px;
 }
 .prog1 .fnote{
   text-align: end;
@@ -178,6 +201,8 @@ form p a{
   background-color: blue;
   width: 280px;
   height: 300px;
+  padding-top: 10px;
+  margin: 10px;
 }
 
 .prog2 .fnote{
@@ -188,6 +213,8 @@ form p a{
   background-color: blue;
   width: 280px;
   height: 300px;
+  padding-top: 10px;
+  margin: 10px;
 }
 .prog3 .fnote{
   text-align: end;
@@ -197,6 +224,8 @@ form p a{
   background-color: blue;
   width: 280px;
   height: 300px;
+  padding-top: 10px;
+  margin: 10px;
 }
 .prog4 .fnote{
   text-align: end;
