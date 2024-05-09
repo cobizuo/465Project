@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://kit.fontawesome.com/e413706a8f.js" crossorigin="anonymous"></script>
+</head>
+
+<!-- Database setup(use for scripts)
+name 
+weight
+height
+email
+password
+bmi 
+-->
+
+<body>
+    <div class="container">
+        <div class="form-box" id="formBox">
+            <h1 id="title">Sign Up</h1>
+            <form>
+                <div class="group">
+                    <div class="input-field" id="nameField">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" name="name" placeholder="Full Name" required>
+                    </div>
+
+                    <div class="input-field" id="numField">
+                        <i class="fa-solid fa-weight-scale"></i>
+                        <input type="number" name="height" placeholder="Height" required>
+                    </div>
+
+                    <div class="input-field" id="numField2">
+                        <i class="fa-solid fa-weight-scale"></i>
+                        <input type="number" name="weight" placeholder="Weight" required>
+                    </div>
+
+                    <div class="input-field">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+
+                    <div class="input-field">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                </div>
+                <div class="btn-field">
+                    <button type="submit" id="signupBtn">Signup</button>
+                    <button type="submit" id="loginBtn" class="disable">Login</button>
+                </div>
+<br>
+                <a href="index.html">Return Home</a>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
